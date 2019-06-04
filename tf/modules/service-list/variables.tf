@@ -1,6 +1,7 @@
 variable "prefix" {}
 variable "domain" {}
 variable "region" {}
+variable "project" {}
 variable "log_group_name" {}
 variable "docker_image" {}
 

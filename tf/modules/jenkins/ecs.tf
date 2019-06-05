@@ -77,6 +77,6 @@ module "jenkins" {
   load_balancer_arn                = "${var.loadbalancer_arn}"
   load_balancer_fqdn               = "${var.loadbalancer_fqdn}"
   load_balancer_zone_id            = "${var.loadbalancer_zone_id}"
-  service_number_https             = "${var.service_number}"
   load_balancer_https_listener_arn = "${var.loadbalancer_listener_arn}"
+  service_number_https             = "${var.service_number}"
 }

@@ -3,6 +3,7 @@ data "aws_iam_policy_document" "grafana" {
     actions = [
       "cloudwatch:ListMetrics",
       "cloudwatch:GetMetricStatistics",
+      "cloudwatch:GetMetricData",
       "ec2:DescribeTags",
       "ec2:DescribeInstances",
     ]

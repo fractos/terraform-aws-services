@@ -1,5 +1,5 @@
 module "grafana_task" {
-  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/tasks/base/"
+  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/tasks/base/?ref=v1.0"
 
   environment_variables = {}
 
@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "grafana_task" {
 }
 
 module "grafana" {
-  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/base/web/"
+  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/base/web/?ref=v1.0"
 
   name       = "${var.prefix}-grafana"
   project    = "${var.project}"

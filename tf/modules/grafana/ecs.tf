@@ -32,8 +32,8 @@ module "grafana_task" {
 
 resource "aws_ecs_task_definition" "grafana_task" {
   family                = "${var.prefix}-grafana"
-  container_definitions = "${module.grafana_task.task_definition_json}"
-  task_role_arn         = "${module.grafana_task.role_arn}"
+  container_definitions = module.grafana_task.task_definition_json
+  task_role_arn         = module.grafana_task.role_arn
 
   volume {
     name      = "${var.prefix}-grafana"

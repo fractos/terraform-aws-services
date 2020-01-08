@@ -12,7 +12,7 @@ variable "data_volume" {
 variable "cluster_id" {}
 
 variable "subnets" {
-  type = "list"
+  type = list
 }
 
 variable "vpc_id" {}

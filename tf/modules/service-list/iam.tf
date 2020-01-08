@@ -14,6 +14,6 @@ data "aws_iam_policy_document" "service_list" {
 }
 
 resource "aws_iam_role_policy" "service_list" {
-  role   = "${module.service_list_task.role_name}"
-  policy = "${data.aws_iam_policy_document.service_list.json}"
+  role   = module.service_list_task.role_name
+  policy = data.aws_iam_policy_document.service_list.json
 }

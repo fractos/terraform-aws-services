@@ -15,6 +15,6 @@ data "aws_iam_policy_document" "grafana" {
 }
 
 resource "aws_iam_role_policy" "grafana" {
-  role   = "${module.grafana_task.role_name}"
-  policy = "${data.aws_iam_policy_document.grafana.json}"
+  role   = module.grafana_task.role_name
+  policy = data.aws_iam_policy_document.grafana.json
 }

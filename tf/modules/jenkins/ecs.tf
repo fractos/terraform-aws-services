@@ -36,8 +36,8 @@ module "jenkins_task" {
 
 resource "aws_ecs_task_definition" "jenkins_task" {
   family                = "${var.prefix}-jenkins"
-  container_definitions = "${module.jenkins_task.task_definition_json}"
-  task_role_arn         = "${module.jenkins_task.role_arn}"
+  container_definitions = module.jenkins_task.task_definition_json
+  task_role_arn         = module.jenkins_task.role_arn
 
   volume {
     name      = "${var.prefix}-jenkins"

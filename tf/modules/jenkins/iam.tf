@@ -16,11 +16,11 @@ data "aws_iam_policy" "ecr_power_user" {
 }
 
 resource "aws_iam_role_policy" "jenkins_ecs" {
-  role   = "${module.jenkins_task.role_name}"
-  policy = "${data.aws_iam_policy_document.jenkins.json}"
+  role   = module.jenkins_task.role_name
+  policy = data.aws_iam_policy_document.jenkins.json
 }
 
 resource "aws_iam_role_policy_attachment" "jenkins_ecr_power_user" {
-  role       = "${module.jenkins_task.role_name}"
-  policy_arn = "${data.aws_iam_policy.ecr_power_user.arn}"
+  role       = module.jenkins_task.role_name
+  policy_arn = data.aws_iam_policy.ecr_power_user.arn
 }

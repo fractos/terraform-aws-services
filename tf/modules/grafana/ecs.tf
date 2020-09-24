@@ -1,13 +1,13 @@
 module "grafana_task" {
-  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/tasks/base/?ref=v2.0"
+  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/tasks/base/?ref=v2.1"
 
   environment_variables = {}
 
   environment_variables_length = 0
 
-  prefix           = "${var.prefix}"
-  log_group_name   = "${var.log_group_name}"
-  log_group_region = "${var.region}"
+  prefix           = var.prefix
+  log_group_name   = var.log_group_name
+  log_group_region = var.region
   log_prefix       = "${var.prefix}-grafana"
 
   family = "${var.prefix}-grafana"
@@ -18,7 +18,7 @@ module "grafana_task" {
   cpu_reservation    = 0
   memory_reservation = 128
 
-  docker_image = "${var.docker_image}"
+  docker_image = var.docker_image
 
   mount_points = [
     {
@@ -42,17 +42,17 @@ resource "aws_ecs_task_definition" "grafana_task" {
 }
 
 module "grafana" {
-  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/base/web/?ref=v2.0"
+  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/base/web/?ref=v2.1"
 
   name       = "${var.prefix}-grafana"
-  project    = "${var.project}"
-  cluster_id = "${var.cluster_id}"
+  project    = var.project
+  cluster_id = var.cluster_id
 
   subnets = [
-    "${var.subnets}",
+    var.subnets,
   ]
 
-  vpc = "${var.vpc_id}"
+  vpc = var.vpc_id
 
   container_port       = "3000"
   container_name       = "${var.prefix}-grafana"
@@ -61,12 +61,12 @@ module "grafana" {
   health_check_matcher = "200"
 
   hostname = "grafana"
-  domain   = "${var.domain}"
-  zone_id  = "${var.zone_id}"
+  domain   = var.domain
+  zone_id  = var.zone_id
 
-  load_balancer_arn                = "${var.loadbalancer_arn}"
-  load_balancer_fqdn               = "${var.loadbalancer_fqdn}"
-  load_balancer_zone_id            = "${var.loadbalancer_zone_id}"
-  load_balancer_https_listener_arn = "${var.loadbalancer_listener_arn}"
-  service_number_https             = "${var.service_number}"
+  load_balancer_arn                = var.loadbalancer_arn
+  load_balancer_fqdn               = var.loadbalancer_fqdn
+  load_balancer_zone_id            = var.loadbalancer_zone_id
+  load_balancer_https_listener_arn = var.loadbalancer_listener_arn
+  service_number_https             = var.service_number
 }

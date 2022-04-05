@@ -1,5 +1,5 @@
 module "jenkins_task" {
-  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/tasks/base/?ref=v2.1"
+  source = "git::https://github.com/fractos/terraform-aws-modules.git//tf/modules/services/tasks/base/?ref=v2.1"
 
   environment_variables = {
     "JAVA_OPTS" = "-Dhudson.footerURL=jenkins.${var.domain} -Djava.util.logging.config.file=/var/jenkins_home/log.properties"
@@ -51,7 +51,7 @@ resource "aws_ecs_task_definition" "jenkins_task" {
 }
 
 module "jenkins" {
-  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/base/web/?ref=v2.1"
+  source = "git::https://github.com/fractos/terraform-aws-modules.git//tf/modules/services/base/web/?ref=v2.1"
 
   name       = "${var.prefix}-jenkins"
   project    = var.project

@@ -1,5 +1,5 @@
 module "service_list_task" {
-  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/tasks/base/?ref=v2.1"
+  source = "git::https://github.com/fractos/terraform-aws-modules.git//tf/modules/services/tasks/base/?ref=v2.1"
 
   environment_variables = {
     "AWS_DEFAULT_REGION" = var.region
@@ -24,7 +24,7 @@ module "service_list_task" {
 }
 
 module "service_list" {
-  source = "git::https://github.com/digirati-co-uk/terraform-aws-modules.git//tf/modules/services/base/web/?ref=v2.1"
+  source = "git::https://github.com/fractos/terraform-aws-modules.git//tf/modules/services/base/web/?ref=v2.1"
 
   name       = "${var.prefix}-service-list"
   project    = var.project
